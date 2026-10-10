@@ -62,6 +62,18 @@ const Register = () => {
     return (
         <section className="flex min-h-[100vh] items-center justify-center bg-gray-50 px-4 py-12">
             <div className="w-full max-w-md  rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+                
+                {/* Provides quick navigation back to the homepage. */}
+                <div className="mb-5">
+                    <Link
+                        to="/"
+                        className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
+                    >
+                        <i className="ri-arrow-left-line text-lg" aria-hidden="true"></i>
+                        Back to Home
+                    </Link>
+                </div>
+                
                 <div className="mb-8 text-center">
                     <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gray-100">
                         <i className="ri-user-add-line text-2xl text-gray-900"></i>

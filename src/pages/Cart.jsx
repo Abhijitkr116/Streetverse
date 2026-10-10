@@ -13,6 +13,7 @@ const Cart = () => {
         clearCart,
     } = useCart();
 
+    // Formats numeric prices as Indian Rupee currency.
     const formatPrice = (price) =>
         `₹${price.toLocaleString("en-IN")}`;
 
@@ -64,6 +65,7 @@ const Cart = () => {
             <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
                 <div className="space-y-4 lg:col-span-2">
                     {cartItems.map((item) => {
+                        // Calculates the discounted unit price for the order summary.
                         const unitPrice = Math.round(
                             item.price * (1 - item.discount / 100)
                         );

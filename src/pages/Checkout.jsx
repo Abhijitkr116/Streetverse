@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
+// Manages checkout form state, order submission, and order summary display.
 const Checkout = () => {
     const { cartItems, subtotal, clearCart } = useCart();
 
@@ -20,6 +21,7 @@ const Checkout = () => {
 
     const [message, setMessage] = useState("");
 
+    // Updates the relevant checkout field when the user enters or changes a value.
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -29,7 +31,7 @@ const Checkout = () => {
         }));
     };
 
-
+    // Validates checkout data, saves the order locally, clears the cart, and navigates to order history.
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -87,7 +89,7 @@ const Checkout = () => {
         }
     };
 
-
+    // Formats numeric prices as Indian Rupee currency.
     const formatPrice = (price) =>
         `₹${price.toLocaleString("en-IN")}`;
 
@@ -383,7 +385,9 @@ const Checkout = () => {
                             </h2>
 
                             <div className="mt-6 max-h-80 space-y-4 overflow-y-auto">
+                                // Creates a copy of each cart item for the saved order.
                                 {cartItems.map((item) => {
+                                    // Calculates the discounted unit price for the order summary.
                                     const unitPrice = Math.round(
                                         item.price * (1 - (item.discount || 0) / 100)
                                     );

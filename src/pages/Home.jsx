@@ -7,7 +7,7 @@ const categories = [
     {
         name: "Men's Wear",
         description: "Everyday essentials for him",
-        image: "/products/tshirt-10.jpg",
+        image: "/products/tshirt-1.jpg",
         filter: "department",
         value: "Men",
         background: "bg-stone-100",
@@ -15,18 +15,18 @@ const categories = [
     {
         name: "Women's Wear",
         description: "Modern styles, made for you",
-        image: "/products/dress-3.jpg",
+        image: "/products/dress-6.jpg",
         filter: "department",
         value: "Women",
-        background: "bg-rose-50",
+        background: "bg-yellow-50",
     },
     {
         name: "Sneakers",
         description: "Step into everyday comfort",
-        image: "/products/sneaker-1.jpg",
+        image: "/products/sneaker-2.jpg",
         filter: "category",
         value: "Sneakers",
-        background: "bg-sky-50",
+        background: "bg-orange-50",
     },
     {
         name: "Accessories",
@@ -34,7 +34,7 @@ const categories = [
         image: "/products/sunglasses-1.jpg",
         filter: "category",
         value: "Accessories",
-        background: "bg-amber-50",
+        background: "bg-zinc-50",
     },
 ];
 
@@ -87,14 +87,16 @@ const HeroSection = () => {
                     </div>
                 </div>
 
-                <div className="relative min-h-[280px] md:absolute md:inset-y-0 md:right-0 md:w-1/2">
+                {/* Displays the hero image with responsive white blending effects. */}
+                <div className="relative min-h-[280px] md:absolute md:inset-y-0 md:right-0 md:min-h-0 md:w-1/2">
                     <img
                         src="/products/Jacket-1-3.jpg"
-                        alt="Featured hoodie from the new collection"
+                        alt="Featured jacket from the new collection"
                         className="absolute inset-0 h-full w-full object-cover object-center"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent md:bg-gradient-to-r md:from-stone-100 md:via-stone-100/20 md:to-transparent" />
+                    {/* White fade on mobile, horizontal white fade on desktop. */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-white via-white/40 to-transparent md:bg-gradient-to-r md:from-stone-100 md:via-stone-100/20 md:to-transparent" />
                 </div>
             </div>
         </section>

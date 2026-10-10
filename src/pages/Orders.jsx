@@ -1,10 +1,11 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
+// Displays the user's saved orders and details of recently placed orders.
 const Orders = () => {
     const location = useLocation();
 
+    // Loads saved orders from localStorage and safely handles invalid data.
     const [orders] = useState(() => {
         try {
             const saved = JSON.parse(
@@ -17,9 +18,11 @@ const Orders = () => {
         }
     });
 
+    // Formats a numeric amount as Indian Rupee currency.
     const formatPrice = (price) =>
         `₹${Number(price).toLocaleString("en-IN")}`;
 
+    // Converts an order date into a readable Indian date format.
     const formatDate = (date) =>
         new Date(date).toLocaleDateString("en-IN", {
             day: "numeric",
@@ -30,6 +33,7 @@ const Orders = () => {
     return (
         <section className="min-h-[60vh] bg-gray-50 px-4 py-10 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-5xl">
+                {/* Displays a confirmation when the user has just placed an order. */}
                 {location.state?.orderPlaced && (
                     <div className="mb-8 rounded-2xl border border-green-200 bg-green-50 p-6">
                         <div className="flex items-center gap-3">
@@ -48,11 +52,13 @@ const Orders = () => {
                     </div>
                 )}
 
+                {/* Shows the page heading and shopping navigation. */}
                 <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900">
                             My Orders
                         </h1>
+
                         <p className="mt-2 text-gray-500">
                             View your order history and details.
                         </p>
@@ -66,6 +72,7 @@ const Orders = () => {
                     </Link>
                 </div>
 
+                {/* Displays an empty state when no orders have been saved. */}
                 {orders.length === 0 ? (
                     <div className="rounded-2xl border border-gray-200 bg-white px-6 py-16 text-center">
                         <i className="ri-file-list-3-line text-6xl text-gray-300"></i>
@@ -80,6 +87,7 @@ const Orders = () => {
                     </div>
                 ) : (
                     <div className="space-y-6">
+                        {/* Renders each saved order as a separate card. */}
                         {orders.map((order) => (
                             <article
                                 key={order.id}
@@ -90,6 +98,7 @@ const Orders = () => {
                                         <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
                                             Order number
                                         </p>
+
                                         <p className="mt-1 font-semibold text-gray-900">
                                             {order.id}
                                         </p>
@@ -99,6 +108,7 @@ const Orders = () => {
                                         <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
                                             Order date
                                         </p>
+
                                         <p className="mt-1 font-medium text-gray-900">
                                             {formatDate(order.date)}
                                         </p>
@@ -112,10 +122,12 @@ const Orders = () => {
                                 </div>
 
                                 <div className="space-y-4 p-5">
+                                    {/* Renders every product belonging to this order. */}
                                     {order.items.map((item, index) => {
+                                        // Calculates the discounted price for one item.
                                         const unitPrice = Math.round(
                                             item.price *
-                                            (1 - (item.discount || 0) / 100)
+                                                (1 - (item.discount || 0) / 100)
                                         );
 
                                         return (
@@ -138,13 +150,19 @@ const Orders = () => {
 
                                                     <p className="mt-1 text-sm text-gray-500">
                                                         Qty: {item.quantity}
-                                                        {item.size ? ` · Size: ${item.size}` : ""}
-                                                        {item.color ? ` · ${item.color}` : ""}
+                                                        {item.size
+                                                            ? ` · Size: ${item.size}`
+                                                            : ""}
+                                                        {item.color
+                                                            ? ` · ${item.color}`
+                                                            : ""}
                                                     </p>
                                                 </div>
 
                                                 <p className="font-semibold text-gray-900">
-                                                    {formatPrice(unitPrice * item.quantity)}
+                                                    {formatPrice(
+                                                        unitPrice * item.quantity
+                                                    )}
                                                 </p>
                                             </div>
                                         );
@@ -170,6 +188,7 @@ const Orders = () => {
                                         <p className="text-sm text-gray-500">
                                             Order total
                                         </p>
+
                                         <p className="text-xl font-bold text-gray-900">
                                             {formatPrice(order.total)}
                                         </p>

@@ -52,8 +52,8 @@ const ProductDetails = () => {
         product.images?.length > 0
             ? product.images
             : product.image
-              ? [product.image]
-              : [];
+                ? [product.image]
+                : [];
 
     const discountedPrice = Math.round(
         product.price * (1 - product.discount / 100)
@@ -223,11 +223,10 @@ const ProductDetails = () => {
                                     onClick={() => selectImage(index)}
                                     aria-label={`View product image ${index + 1}`}
                                     aria-pressed={currentImage === index}
-                                    className={`w-20 shrink-0 overflow-hidden rounded-xl border-2 transition sm:w-24 ${
-                                        currentImage === index
+                                    className={`w-20 shrink-0 overflow-hidden rounded-xl border-2 transition sm:w-24 ${currentImage === index
                                             ? "border-gray-950"
                                             : "border-transparent hover:border-gray-300"
-                                    }`}
+                                        }`}
                                 >
                                     <img
                                         src={image}
@@ -315,11 +314,10 @@ const ProductDetails = () => {
                                         type="button"
                                         onClick={() => setSelectedSize(size)}
                                         aria-pressed={selectedSize === size}
-                                        className={`min-w-12 rounded-lg border px-4 py-2.5 text-sm font-medium transition ${
-                                            selectedSize === size
+                                        className={`min-w-12 rounded-lg border px-4 py-2.5 text-sm font-medium transition ${selectedSize === size
                                                 ? "border-gray-950 bg-gray-950 text-white"
                                                 : "border-gray-200 text-gray-700 hover:border-gray-950"
-                                        }`}
+                                            }`}
                                     >
                                         {size}
                                     </button>
@@ -350,11 +348,10 @@ const ProductDetails = () => {
                                         type="button"
                                         onClick={() => setSelectedColor(color)}
                                         aria-pressed={selectedColor === color}
-                                        className={`rounded-lg border px-4 py-2.5 text-sm transition ${
-                                            selectedColor === color
+                                        className={`rounded-lg border px-4 py-2.5 text-sm transition ${selectedColor === color
                                                 ? "border-gray-950 bg-gray-950 text-white"
                                                 : "border-gray-200 text-gray-700 hover:border-gray-950"
-                                        }`}
+                                            }`}
                                     >
                                         {color}
                                     </button>
@@ -432,9 +429,8 @@ const ProductDetails = () => {
                             className="flex h-full min-w-14 items-center justify-center rounded-xl border border-gray-200 transition hover:border-gray-950"
                         >
                             <i
-                                className={`ri-poker-hearts-fill text-xl ${
-                                    isProductWishlisted ? "text-red-500" : "text-gray-600"
-                                }`}
+                                className={`ri-poker-hearts-fill text-xl ${isProductWishlisted ? "text-red-500" : "text-gray-600"
+                                    }`}
                                 aria-hidden="true"
                             />
                         </button>
@@ -444,11 +440,10 @@ const ProductDetails = () => {
                         <p
                             role="status"
                             aria-live="polite"
-                            className={`mt-4 rounded-lg px-4 py-3 text-sm font-medium ${
-                                cartMessageType === "success"
+                            className={`mt-4 rounded-lg px-4 py-3 text-sm font-medium ${cartMessageType === "success"
                                     ? "bg-green-50 text-green-700"
                                     : "bg-red-50 text-red-600"
-                            }`}
+                                }`}
                         >
                             {cartMessage}
                         </p>
